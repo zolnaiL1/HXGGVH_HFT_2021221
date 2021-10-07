@@ -5,6 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="HXGGVH_HFT_2021221.Database.mdf" />
+    <None Remove="HXGGVH_HFT_2021221.Database_log.ldf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="HXGGVH_HFT_2021221.Database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HXGGVH_HFT_2021221.Database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HXGGVH_HFT_2021221.Models\HXGGVH_HFT_2021221.Models.csproj" />
   </ItemGroup>
 
