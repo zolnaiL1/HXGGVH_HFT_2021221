@@ -13,7 +13,7 @@ namespace HXGGVH_HFT_2021221.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TraingerID { get; set; }
+        public int TrainerID { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -34,7 +34,6 @@ namespace HXGGVH_HFT_2021221.Models
         public Trainer()
         {
             Pokemons = new HashSet<Pokemon>();
-        }
-
+        }       
     }
 }

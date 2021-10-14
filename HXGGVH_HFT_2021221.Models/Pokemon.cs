@@ -11,7 +11,7 @@ namespace HXGGVH_HFT_2021221.Models
     [Table("Pokemons")]
     public class Pokemon
     {
-        [Key]
+        [Key] 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PokemonID { get; set; }
 
