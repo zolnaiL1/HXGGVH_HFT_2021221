@@ -25,7 +25,8 @@ namespace HXGGVH_HFT_2021221.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\HXGGVH_HFT_2021221.Database.mdf; Integrated Security=True; MultipleActiveResultSets=True");
+                optionsBuilder.UseLazyLoadingProxies().
+                UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\HXGGVH_HFT_2021221.Database.mdf; Integrated Security=True; MultipleActiveResultSets=True");
             }
         }
 
