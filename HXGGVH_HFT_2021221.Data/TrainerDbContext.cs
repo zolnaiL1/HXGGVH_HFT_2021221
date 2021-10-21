@@ -10,7 +10,7 @@ namespace HXGGVH_HFT_2021221.Data
 {
     //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\HXGGVH_HFT_2021221.Database.mdf;Integrated Security=True
 
-    class TrainerDbContext : DbContext
+    public class TrainerDbContext : DbContext
     {
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<Trainer> Trainers { get; set; }
