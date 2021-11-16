@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HXGGVH_HFT_2021221.Repository
 {
-    public class PokemonRepository
+    public class PokemonRepository : IPokemonRepository
     {
         TrainerDbContext db;
 
