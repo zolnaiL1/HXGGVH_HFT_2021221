@@ -45,5 +45,8 @@ namespace HXGGVH_HFT_2021221.Logic
         {
             trainerRepo.Update(trainer);
         }
+
+        //NON-CRUD
+        //1
     }
 }

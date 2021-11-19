@@ -11,10 +11,16 @@ namespace HXGGVH_HFT_2021221.Logic
     public class PokemonLogic : IPokemonLogic
     {
         IPokemonRepository pokemonRepo;
-        public PokemonLogic(IPokemonRepository pokemonRepo)
+        ITrainerRepository trainerRepo;
+        IRegionRepository regionRepo;
+
+        public PokemonLogic(IPokemonRepository pokemonRepo, ITrainerRepository trainerRepo, IRegionRepository regionRepo)
         {
             this.pokemonRepo = pokemonRepo;
+            this.trainerRepo = trainerRepo;
+            this.regionRepo = regionRepo;
         }
+
 
         //CRUD: Create, Read, ReadAll, Update, Delete
         public void Create(Pokemon pokemon)
@@ -48,5 +54,17 @@ namespace HXGGVH_HFT_2021221.Logic
 
         //NON-CRUD
         //1
+        public IEnumerable<Pokemon> PokemonsInKantoRegion()
+        {
+            var q = from pokemons in pokemonRepo.ReadAll()
+                    join trainers in trainerRepo.ReadAll()
+                    on pokemons.TrainerID equals trainers.TrainerID
+                    join regions in regionRepo.ReadAll()
+                    on trainers.RegionID equals regions.RegionID
+                    where regions.Name == "Kanto"
+                    select pokemons;
+            
+            return q;
+        }
     }
 }
