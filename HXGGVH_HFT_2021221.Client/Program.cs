@@ -27,6 +27,9 @@ namespace HXGGVH_HFT_2021221.Client
             //3
             PokemonLogic nonCrudTest3 = new PokemonLogic(poke, trainer, region);
             var q3 = nonCrudTest3.PokemonsWhereTrainerLevelUnder10();
+            //4
+            RegionLogic nonCrudTest4 = new RegionLogic(region, poke, trainer);
+            var q4 = nonCrudTest4.RegionWherePikachuLives();
             //TEST
         }
 

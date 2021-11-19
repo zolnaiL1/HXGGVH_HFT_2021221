@@ -11,10 +11,18 @@ namespace HXGGVH_HFT_2021221.Logic
     public class RegionLogic : IRegionLogic
     {
         IRegionRepository regionRepo;
-        public RegionLogic(IRegionRepository regionRepo)
+        IPokemonRepository pokemonRepo;
+        ITrainerRepository trainerRepo;
+
+        public RegionLogic(IRegionRepository regionRepo, IPokemonRepository pokemonRepo, ITrainerRepository trainerRepo)
         {
             this.regionRepo = regionRepo;
+            this.pokemonRepo = pokemonRepo;
+            this.trainerRepo = trainerRepo;
         }
+
+
+
 
         //CRUD: Create, Read, ReadAll, Update, Delete
         public void Create(Region region)
@@ -47,6 +55,18 @@ namespace HXGGVH_HFT_2021221.Logic
         }
 
         //NON-CRUD
-        //1
+        //4
+        public IEnumerable<Region> RegionWherePikachuLives()
+        {
+            var q = from pokemons in pokemonRepo.ReadAll()
+                    join trainers in trainerRepo.ReadAll()
+                    on pokemons.TrainerID equals trainers.TrainerID
+                    join regions in regionRepo.ReadAll()
+                    on trainers.RegionID equals regions.RegionID
+                    where pokemons.Name == "Pikachu"
+                    select regions;
+
+            return q;
+        }
     }
 }

@@ -15,5 +15,8 @@ namespace HXGGVH_HFT_2021221.Logic
         public void Delete(int id);
         public void Update(Region region);
 
+
+        //nonCRUD
+        public IEnumerable<Region> RegionWherePikachuLives();
     }
 }
