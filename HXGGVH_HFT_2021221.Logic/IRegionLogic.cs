@@ -14,5 +14,6 @@ namespace HXGGVH_HFT_2021221.Logic
         IQueryable<Region> ReadAll();
         public void Delete(int id);
         public void Update(Region region);
+
     }
 }

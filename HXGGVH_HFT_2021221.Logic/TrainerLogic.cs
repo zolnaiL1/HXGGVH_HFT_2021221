@@ -11,10 +11,12 @@ namespace HXGGVH_HFT_2021221.Logic
     public class TrainerLogic : ITrainerLogic
     {
         ITrainerRepository trainerRepo;
+
         public TrainerLogic(ITrainerRepository trainerRepo)
         {
-            this.trainerRepo = trainerRepo;
+            this.trainerRepo = trainerRepo;            
         }
+
 
         //CRUD: Create, Read, ReadAll, Update, Delete
         public void Create(Trainer trainer)
@@ -45,8 +47,5 @@ namespace HXGGVH_HFT_2021221.Logic
         {
             trainerRepo.Update(trainer);
         }
-
-        //NON-CRUD
-        //1
     }
 }

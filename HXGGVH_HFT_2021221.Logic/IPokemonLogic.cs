@@ -18,6 +18,7 @@ namespace HXGGVH_HFT_2021221.Logic
         //nonCRUD
         public IEnumerable<Pokemon> PokemonsInKantoRegion();
         public IEnumerable<Pokemon> PokemonsWhereTrainerWinIs10();
+        public IEnumerable<Pokemon> PokemonsWhereTrainerLevelUnder10();
 
     }
 }
