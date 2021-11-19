@@ -66,5 +66,17 @@ namespace HXGGVH_HFT_2021221.Logic
             
             return q;
         }
+        //2
+        public IEnumerable<Pokemon> PokemonsWhereTrainerWinIs10()
+        {
+            int wins = 10;
+            var q = from pokemons in pokemonRepo.ReadAll()
+                    join trainers in trainerRepo.ReadAll()
+                    on pokemons.TrainerID equals trainers.TrainerID
+                    where trainers.Wins >= wins
+                    select pokemons;
+
+            return q;
+        }
     }
 }

@@ -21,7 +21,10 @@ namespace HXGGVH_HFT_2021221.Client
             //1
             PokemonLogic nonCrudTest1 = new PokemonLogic(poke, trainer, region);
             var q1 = nonCrudTest1.PokemonsInKantoRegion();
-            
+            //2
+            PokemonLogic nonCrudTest2 = new PokemonLogic(poke, trainer, region);
+            var q2 = nonCrudTest2.PokemonsWhereTrainerWinIs10();
+
             //TEST
         }
 
