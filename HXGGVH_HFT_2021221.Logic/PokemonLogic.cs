@@ -25,7 +25,7 @@ namespace HXGGVH_HFT_2021221.Logic
         //CRUD: Create, Read, ReadAll, Update, Delete
         public void Create(Pokemon pokemon)
         {
-            if (pokemon.Name == null)
+            if (pokemon.Name == "")
             {
                 throw new ArgumentException("Name is null!");
             }
@@ -34,7 +34,10 @@ namespace HXGGVH_HFT_2021221.Logic
 
         public Pokemon Read(int id)
         {
-            return pokemonRepo.Read(id);
+            if (id < pokemonRepo.ReadAll().Count() && id > 0)
+                return pokemonRepo.Read(id);
+            else
+                throw new IndexOutOfRangeException("This ID is non existent.");         
         }
 
         public IQueryable<Pokemon> ReadAll()
@@ -85,7 +88,7 @@ namespace HXGGVH_HFT_2021221.Logic
             var q = from pokemons in pokemonRepo.ReadAll()
                     join trainers in trainerRepo.ReadAll()
                     on pokemons.TrainerID equals trainers.TrainerID
-                    where trainers.Level >= level
+                    where trainers.Level < level
                     select pokemons;
 
             return q;

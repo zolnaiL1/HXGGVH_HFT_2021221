@@ -27,7 +27,7 @@ namespace HXGGVH_HFT_2021221.Logic
         //CRUD: Create, Read, ReadAll, Update, Delete
         public void Create(Region region)
         {
-            if (region.Name == null)
+            if (region.Name == "")
             {
                 throw new ArgumentException("Name is null!");
             }
@@ -36,7 +36,10 @@ namespace HXGGVH_HFT_2021221.Logic
 
         public Region Read(int id)
         {
-            return regionRepo.Read(id);
+            if (id < regionRepo.ReadAll().Count() && id > 0)
+                return regionRepo.Read(id);
+            else
+                throw new IndexOutOfRangeException("This ID is non existent.");
         }
 
         public IQueryable<Region> ReadAll()

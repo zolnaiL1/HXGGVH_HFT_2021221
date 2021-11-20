@@ -21,7 +21,7 @@ namespace HXGGVH_HFT_2021221.Logic
         //CRUD: Create, Read, ReadAll, Update, Delete
         public void Create(Trainer trainer)
         {
-            if (trainer.Name == null)
+            if (trainer.Name == "")
             {
                 throw new ArgumentException("Name is null!");
             }
@@ -30,7 +30,10 @@ namespace HXGGVH_HFT_2021221.Logic
 
         public Trainer Read(int id)
         {
-            return trainerRepo.Read(id);
+            if (id < trainerRepo.ReadAll().Count() && id > 0)
+                return trainerRepo.Read(id);
+            else
+                throw new IndexOutOfRangeException("This ID is non existent.");
         }
 
         public IQueryable<Trainer> ReadAll()

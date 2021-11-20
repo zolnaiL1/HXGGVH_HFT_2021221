@@ -26,8 +26,8 @@ namespace HXGGVH_HFT_2021221.Repository
         }
 
         public Pokemon Read(int id)
-        {
-            return db.Pokemons.FirstOrDefault(t => t.PokemonID == id);
+        {           
+           return db.Pokemons.FirstOrDefault(t => t.PokemonID == id);
         }
 
         public IQueryable<Pokemon> ReadAll()
