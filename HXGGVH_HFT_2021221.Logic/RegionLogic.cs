@@ -68,5 +68,18 @@ namespace HXGGVH_HFT_2021221.Logic
 
             return q;
         }
+        //5
+        public IEnumerable<Region> RegionWherePokemonsTypeIsWater()
+        {
+            var q = from pokemons in pokemonRepo.ReadAll()
+                    join trainers in trainerRepo.ReadAll()
+                    on pokemons.TrainerID equals trainers.TrainerID
+                    join regions in regionRepo.ReadAll()
+                    on trainers.RegionID equals regions.RegionID
+                    where pokemons.Type.Contains("Water")
+                    select regions;
+
+            return q.ToList().Distinct();
+        }
     }
 }

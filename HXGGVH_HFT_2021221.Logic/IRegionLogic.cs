@@ -18,5 +18,6 @@ namespace HXGGVH_HFT_2021221.Logic
 
         //nonCRUD
         public IEnumerable<Region> RegionWherePikachuLives();
+        public IEnumerable<Region> RegionWherePokemonsTypeIsWater();
     }
 }

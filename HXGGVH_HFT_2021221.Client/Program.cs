@@ -30,9 +30,10 @@ namespace HXGGVH_HFT_2021221.Client
             //4
             RegionLogic nonCrudTest4 = new RegionLogic(region, poke, trainer);
             var q4 = nonCrudTest4.RegionWherePikachuLives();
+            //5
+            RegionLogic nonCrudTest5 = new RegionLogic(region, poke, trainer);
+            var q5 = nonCrudTest5.RegionWherePokemonsTypeIsWater();
             //TEST
         }
-
-
     }
 }
