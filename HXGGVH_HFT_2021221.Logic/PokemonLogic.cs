@@ -66,7 +66,7 @@ namespace HXGGVH_HFT_2021221.Logic
                     on trainers.RegionID equals regions.RegionID
                     where regions.Name == "Kanto"
                     select pokemons;
-            
+
             return q;
         }
         //2

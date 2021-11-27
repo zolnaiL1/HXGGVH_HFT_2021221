@@ -21,13 +21,13 @@ namespace HXGGVH_HFT_2021221.Endpoint
         {
             services.AddControllers();
 
-            services.AddTransient<IPokemonLogic, PokemonLogic>();
-            services.AddTransient<ITrainerLogic, TrainerLogic>();
-            services.AddTransient<IRegionLogic, RegionLogic>();
-            services.AddTransient<IPokemonRepository, PokemonRepository>();
-            services.AddTransient<ITrainerRepository, TrainerRepository>();
-            services.AddTransient<IRegionRepository, RegionRepository>();
-            services.AddTransient<TrainerDbContext, TrainerDbContext>();
+            services.AddSingleton<IPokemonLogic, PokemonLogic>();
+            services.AddSingleton<ITrainerLogic, TrainerLogic>();
+            services.AddSingleton<IRegionLogic, RegionLogic>();
+            services.AddSingleton<IPokemonRepository, PokemonRepository>();
+            services.AddSingleton<ITrainerRepository, TrainerRepository>();
+            services.AddSingleton<IRegionRepository, RegionRepository>();
+            services.AddSingleton<TrainerDbContext, TrainerDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

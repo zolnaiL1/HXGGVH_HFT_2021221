@@ -30,7 +30,7 @@ namespace HXGGVH_HFT_2021221.Models
         [NotMapped]
         [JsonIgnore]
         public virtual Region Region { get; set; }
-        [NotMapped]
+        [NotMapped]      
         public virtual ICollection<Pokemon> Pokemons { get; set; }
 
         public Trainer()
