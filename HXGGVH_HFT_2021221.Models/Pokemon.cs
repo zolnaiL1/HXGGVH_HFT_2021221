@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace HXGGVH_HFT_2021221.Models
@@ -30,6 +31,7 @@ namespace HXGGVH_HFT_2021221.Models
         public int TrainerID { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Trainer Trainer { get; set; }
 
         
