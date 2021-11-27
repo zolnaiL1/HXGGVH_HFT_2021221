@@ -38,31 +38,31 @@ namespace HXGGVH_HFT_2021221.Client
         {
             Console.WriteLine("\n\n[-] Pokemon CRUD methods:");
             //create
-            //restService.Post<Pokemon>(new Pokemon()
-            //{ 
-            //    //PokemonID = 13,
-            //    Name = "Raichu",
-            //    Health = 60,
-            //    Attack = 40,
-            //    Defense = 20,
-            //    Speed = 6,
-            //    Type = "Electric"
-            //    //TrainerID = 1
-            //}, "pokemon");
-            ////update
-            //restService.Put<Pokemon>(new Pokemon()
-            //{
-            //    PokemonID = 13,
-            //    Name = "newRaichu",
-            //    Health = 60,
-            //    Attack = 40,
-            //    Defense = 20,
-            //    Speed = 6,
-            //    Type = "Electric",
-            //    TrainerID = 1
-            //}, "pokemon");
+            restService.Post<Pokemon>(new Pokemon()
+            {
+                //PokemonID = 13,
+                Name = "Raichu",
+                Health = 60,
+                Attack = 40,
+                Defense = 20,
+                Speed = 6,
+                Type = "Electric",
+                TrainerID = 1
+            }, "pokemon");
+            //update
+            restService.Put<Pokemon>(new Pokemon()
+            {
+                PokemonID = 13,
+                Name = "newRaichu",
+                Health = 60,
+                Attack = 40,
+                Defense = 20,
+                Speed = 6,
+                Type = "Electric",
+                TrainerID = 1
+            }, "pokemon");
             //delete
-            //restService.Delete(13, "pokemon");
+            restService.Delete(13, "pokemon");
             //readall
             var pokemons = restService.Get<Pokemon>("pokemon");
 
@@ -71,7 +71,8 @@ namespace HXGGVH_HFT_2021221.Client
                 Console.WriteLine(item.Name.ToString());            
             }
             //readone
-            //Console.WriteLine(restService.GetSingle<Pokemon>("pokemon"));
+            var singlePokemon = restService.Get<Pokemon>(1 ,"pokemon");
+            Console.WriteLine($"\nReadOne : Id = 1 : {singlePokemon.Name}");
 
             Console.ReadLine();
         }
@@ -80,18 +81,25 @@ namespace HXGGVH_HFT_2021221.Client
         {
             Console.WriteLine("\n\n[-] Trainer CRUD methods:");
             //create
-            //restService.Post<Trainer>(new Trainer()
-            //{
-            //    Name = "Gloria"
-            //}, "trainer");
+            restService.Post<Trainer>(new Trainer()
+            {
+                Name = "Gloria",
+                Wins = 3,
+                Level = 12,
+                RegionID = 1
+            }, "trainer");
             //update
-            //restService.Put<Trainer>(new Trainer()
-            //{
-            //    RegionID = 4,
-            //    Name = "newGloria"
-            //}, "trainer");
+            restService.Put<Trainer>(new Trainer()
+            {
+                TrainerID = 7,
+                Name = "newGloria",
+                Wins = 3,
+                Level = 12,
+                RegionID = 1
+            }, "trainer");
             //delete
-            //restService.Delete(4, "trainer");
+            restService.Delete(7, "trainer");
+            //readall
             var trainers = restService.Get<Trainer>("trainer");
 
             foreach (var item in trainers)
@@ -99,7 +107,8 @@ namespace HXGGVH_HFT_2021221.Client
                 Console.WriteLine(item.Name.ToString());
             }
             //readone
-            //???
+            var singleTrainer = restService.Get<Trainer>(1, "trainer");
+            Console.WriteLine($"\nReadOne : Id = 1 : {singleTrainer.Name}");
 
             Console.ReadLine();
         }
@@ -128,7 +137,8 @@ namespace HXGGVH_HFT_2021221.Client
                 Console.WriteLine(item.Name.ToString());
             }
             //readone
-            //???
+            var singleRegion = restService.Get<Region>(1, "region");
+            Console.WriteLine($"\nReadOne : Id = 1 : {singleRegion.Name}");
 
             Console.ReadLine();
         }
