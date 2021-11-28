@@ -36,7 +36,7 @@ namespace HXGGVH_HFT_2021221.Logic
 
         public Region Read(int id)
         {
-            if (id < regionRepo.ReadAll().Count() && id > 0)
+            if (id <= regionRepo.ReadAll().Count() && id > 0)
                 return regionRepo.Read(id);
             else
                 throw new IndexOutOfRangeException("This ID is non existent.");

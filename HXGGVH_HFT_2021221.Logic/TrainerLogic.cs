@@ -30,7 +30,7 @@ namespace HXGGVH_HFT_2021221.Logic
 
         public Trainer Read(int id)
         {
-            if (id < trainerRepo.ReadAll().Count() && id > 0)
+            if (id <= trainerRepo.ReadAll().Count() && id > 0)
                 return trainerRepo.Read(id);
             else
                 throw new IndexOutOfRangeException("This ID is non existent.");

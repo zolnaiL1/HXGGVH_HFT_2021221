@@ -34,7 +34,7 @@ namespace HXGGVH_HFT_2021221.Logic
 
         public Pokemon Read(int id)
         {
-            if (id < pokemonRepo.ReadAll().Count() && id > 0)
+            if (id <= pokemonRepo.ReadAll().Count() && id > 0)
                 return pokemonRepo.Read(id);
             else
                 throw new IndexOutOfRangeException("This ID is non existent.");         
