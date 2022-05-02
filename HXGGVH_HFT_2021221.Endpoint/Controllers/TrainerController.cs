@@ -1,6 +1,8 @@
-﻿using HXGGVH_HFT_2021221.Logic;
+﻿using HXGGVH_HFT_2021221.Endpoint.Services;
+using HXGGVH_HFT_2021221.Logic;
 using HXGGVH_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +18,12 @@ namespace HXGGVH_HFT_2021221.Endpoint.Controllers
     {
         ITrainerLogic trainerLogic;
 
-        public TrainerController(ITrainerLogic trainerLogic)
+        IHubContext<SignalRHub> hub;
+
+        public TrainerController(ITrainerLogic trainerLogic, IHubContext<SignalRHub> hub)
         {
             this.trainerLogic = trainerLogic;
+            this.hub = hub;
         }
 
         // GETALL
@@ -40,6 +45,7 @@ namespace HXGGVH_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Trainer value)
         {
             trainerLogic.Create(value);
+            this.hub.Clients.All.SendAsync("TrainerCreated", value);
         }
 
         // PUT 
@@ -47,13 +53,16 @@ namespace HXGGVH_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Trainer value)
         {
             trainerLogic.Update(value);
+            this.hub.Clients.All.SendAsync("TrainerUpdated", value);
         }
 
         // DELETE
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var trainerToDelete = this.trainerLogic.Read(id);
             trainerLogic.Delete(id);
+            this.hub.Clients.All.SendAsync("TrainerDeleted", trainerToDelete);
         }
     }
 }

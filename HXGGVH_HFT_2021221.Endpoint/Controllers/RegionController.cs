@@ -1,6 +1,8 @@
-﻿using HXGGVH_HFT_2021221.Logic;
+﻿using HXGGVH_HFT_2021221.Endpoint.Services;
+using HXGGVH_HFT_2021221.Logic;
 using HXGGVH_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +18,12 @@ namespace HXGGVH_HFT_2021221.Endpoint.Controllers
     {
         IRegionLogic regionLogic;
 
-        public RegionController(IRegionLogic regionLogic)
+        IHubContext<SignalRHub> hub;
+
+        public RegionController(IRegionLogic regionLogic, IHubContext<SignalRHub> hub)
         {
             this.regionLogic = regionLogic;
+            this.hub = hub;
         }
 
         // GETALL
@@ -40,6 +45,7 @@ namespace HXGGVH_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Region value)
         {
             regionLogic.Create(value);
+            this.hub.Clients.All.SendAsync("RegionCreated", value);
         }
 
         // PUT 
@@ -47,13 +53,16 @@ namespace HXGGVH_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Region value)
         {
             regionLogic.Update(value);
+            this.hub.Clients.All.SendAsync("RegionUpdated", value);
         }
 
         // DELETE
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var regionToDelete = this.regionLogic.Read(id);
             regionLogic.Delete(id);
+            this.hub.Clients.All.SendAsync("RegionDeleted", regionToDelete);
         }
     }
 }

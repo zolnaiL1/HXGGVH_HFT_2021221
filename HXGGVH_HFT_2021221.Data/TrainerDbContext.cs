@@ -37,7 +37,8 @@ namespace HXGGVH_HFT_2021221.Data
                 entity.HasOne(trainer => trainer.Region)
                     .WithMany(region => region.Trainers)
                     .HasForeignKey(trainer => trainer.RegionID)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    //.OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Pokemon>(entity =>
@@ -45,7 +46,8 @@ namespace HXGGVH_HFT_2021221.Data
                 entity.HasOne(pokemon => pokemon.Trainer)
                     .WithMany(trainer => trainer.Pokemons)
                     .HasForeignKey(pokemon => pokemon.TrainerID)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    //.OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             
