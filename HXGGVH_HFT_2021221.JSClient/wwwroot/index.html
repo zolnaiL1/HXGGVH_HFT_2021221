@@ -6,7 +6,43 @@
     <link rel="stylesheet" href="style.css" /> 
 </head>
 <body>
+    <h1>Pokedex</h1>
 
-    <script src="script.js"></script
+    <div id="formdiv">
+        <label>Pokemon Name</label>
+        <input type="text" id="Name" />
+        <label>Pokemon TrainerID</label>
+        <input type="text" id="TrainerID" />
+        <label>Pokemon Type</label>
+        <input type="text" id="Type" />
+        <button type="button" onclick="create()">Add Pokemon</button>
+    </div>
+
+    <div id="updateformdiv">
+        <label>Pokemon Name</label>
+        <input type="text" id="NameToUpdate" />
+        <label>Pokemon TrainerID</label>
+        <input type="text" id="TrainerIDToUpdate" />
+        <label>Pokemon Type</label>
+        <input type="text" id="TypeToUpdate" />
+        <button type="button" onclick="update()">Update Pokemon</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>TrainerID</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
