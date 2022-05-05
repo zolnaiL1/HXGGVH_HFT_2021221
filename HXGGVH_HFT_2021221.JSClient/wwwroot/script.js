@@ -34,6 +34,16 @@ function setupSignalR() {
     start();
 }
 
+async function start() {
+    try {
+        await connection.start();
+        console.log("SignalR Connected.");
+    } catch (err) {
+        console.log(err);
+        setTimeout(start, 5000);
+    }
+};
+
 async function getdata() {
     await fetch('http://localhost:35206/pokemon')
         .then(x => x.json())
