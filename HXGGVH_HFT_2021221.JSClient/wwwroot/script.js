@@ -189,7 +189,7 @@ async function pokemonsWhereTrainerWinIs10Getdata() {
 }
 
 function pokemonsWhereTrainerWinIs10Display() {
-    document.getElementById('pokemonsWhereTrainerWinIs10Tablediv').style.display = 'flex';
+    document.getElementById('PokemonsWhereTrainerWinIs10Tablediv').style.display = 'flex';
 
     document.getElementById('pokemonsWhereTrainerWinIs10Resultarea').innerHTML = "";
 
