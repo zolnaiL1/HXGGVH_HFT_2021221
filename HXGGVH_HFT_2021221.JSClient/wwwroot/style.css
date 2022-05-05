@@ -53,3 +53,42 @@ th {
 table button {
     padding: 2px;
 }
+
+/*NONCRUDS*/
+
+#PokemonsInKantoRegionformdiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: 500px;
+    margin-bottom: 20px;
+}
+
+
+#PokemonsWhereTrainerWinIs10formdiv {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+
+#PokemonsWhereTrainerLevelUnder10formdiv {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#PokemonsInKantoRegionTablediv {
+    display: none;
+    margin-bottom: 50px;
+}
+
+#PokemonsWhereTrainerLevelUnder10Tablediv {
+    display: none;
+    margin-bottom: 100px;
+}
+
+#PokemonsWhereTrainerWinIs10Tablediv {
+    display: none;
+    margin-bottom: 50px;
+}
+

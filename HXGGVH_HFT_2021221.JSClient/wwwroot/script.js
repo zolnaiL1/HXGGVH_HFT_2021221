@@ -1,6 +1,10 @@
 ﻿let pokemons = [];
 let connection = null;
 
+let pokemonsInKantoRegion = [];
+let pokemonsWhereTrainerWinIs10 = [];
+let PokemonsWhereTrainerLevelUnder10 = [];
+
 let pokemonIdToUpdate = -1;
 
 getdata();
@@ -130,3 +134,85 @@ function update() {
 
 }
 
+//nonCRUDsGetdata();
+
+//function nonCRUDsGetdata() {
+    pokemonsInKantoRegionGetdata();
+    pokemonsWhereTrainerWinIs10Getdata();
+    pokemonsWhereTrainerLevelUnder10Getdata();
+//}
+
+
+
+
+async function pokemonsInKantoRegionGetdata() {
+    await fetch('http://localhost:35206/stat/pokemonsInKantoRegion')
+        .then(x => x.json())
+        .then(y => {
+            pokemonsInKantoRegion = y;
+            pokemonsInKantoRegionDisplay();
+        });
+}
+
+function pokemonsInKantoRegionDisplay() {
+    document.getElementById('PokemonsInKantoRegionTablediv').style.display = 'flex';
+
+    document.getElementById('pokemonsInKantoRegionResultarea').innerHTML = "";
+
+    pokemonsInKantoRegion.forEach(t => {
+        document.getElementById('pokemonsInKantoRegionResultarea').innerHTML += "<tr><td>"
+        + t.pokemonID + "</td><td>"
+        + t.name + "</td><td>"
+        + t.trainerID + "</td><td>"
+        + t.type
+        + "</td></tr>";
+    });
+}
+
+async function pokemonsWhereTrainerWinIs10Getdata() {
+    await fetch('http://localhost:35206/stat/pokemonsWhereTrainerWinIs10')
+        .then(x => x.json())
+        .then(y => {
+            pokemonsWhereTrainerWinIs10 = y;
+            pokemonsWhereTrainerWinIs10Display();
+        });
+}
+
+function pokemonsWhereTrainerWinIs10Display() {
+    document.getElementById('pokemonsWhereTrainerWinIs10Tablediv').style.display = 'flex';
+
+    document.getElementById('pokemonsWhereTrainerWinIs10Resultarea').innerHTML = "";
+
+    pokemonsWhereTrainerWinIs10.forEach(t => {
+        document.getElementById('pokemonsWhereTrainerWinIs10Resultarea').innerHTML += "<tr><td>"
+            + t.pokemonID + "</td><td>"
+            + t.name + "</td><td>"
+            + t.trainerID + "</td><td>"
+            + t.type
+            + "</td></tr>";
+    });
+}
+
+async function pokemonsWhereTrainerLevelUnder10Getdata() {
+    await fetch('http://localhost:35206/stat/pokemonsWhereTrainerLevelUnder10')
+        .then(x => x.json())
+        .then(y => {
+            pokemonsWhereTrainerLevelUnder10 = y;
+            pokemonsWhereTrainerLevelUnder10Display();
+        });
+}
+
+function pokemonsWhereTrainerLevelUnder10Display() {
+    document.getElementById('PokemonsWhereTrainerLevelUnder10Tablediv').style.display = 'flex';
+
+    document.getElementById('pokemonsWhereTrainerLevelUnder10Resultarea').innerHTML = "";
+
+    pokemonsWhereTrainerLevelUnder10.forEach(t => {
+        document.getElementById('pokemonsWhereTrainerLevelUnder10Resultarea').innerHTML += "<tr><td>"
+            + t.pokemonID + "</td><td>"
+            + t.name + "</td><td>"
+            + t.trainerID + "</td><td>"
+            + t.type
+            + "</td></tr>";
+    });
+}
